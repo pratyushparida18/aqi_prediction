@@ -1,7 +1,7 @@
 import pandas as pd
 from pymongo import MongoClient
 import hopsworks
-
+import requests
 
 # Connect to MongoDB
 client = MongoClient('mongodb+srv://pratyushparida18:password%4018@cluster0.gewdlyg.mongodb.net/')

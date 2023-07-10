@@ -19,6 +19,10 @@ jobs:
 
     - name: Install dependencies
       run: pip install pandas pymongo requests "hopsworks==3.2.0"
+      
+    - name: Set API Key
+      run: |
+        echo "${{ secrets.API_KEY }}" | python update_data.py
 
     - name: Run script
       run: python update_data.py

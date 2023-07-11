@@ -1,4 +1,4 @@
-name: Update Data
+name: Retrain Model
 
 on:
   schedule:
@@ -18,8 +18,8 @@ jobs:
         python-version: 3.10.12  
 
     - name: Install dependencies
-      run: pip install pandas pymongo requests "hopsworks==3.2.0"
+      run: pip install xgboost scikit-learn joblib "hopsworks==3.2.0"
       
     - name: Run script
       run: |
-        echo "${{ secrets.API_KEY }}" | python update_data.py
+        echo "${{ secrets.API_KEY }}" | python retrain_model.py

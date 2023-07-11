@@ -2,7 +2,7 @@ name: Retrain Model
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "0 0 */7 * *"
 
 jobs:
   update:

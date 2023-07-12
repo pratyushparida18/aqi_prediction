@@ -39,9 +39,10 @@ r2_scores = []
 
 # Create an instance of XGBRegressor with modified hyperparameters
 model = XGBRegressor(
-    max_depth=3,  # Adjust the maximum depth of the trees
-    learning_rate=0.3,  # Adjust the learning rate
-    n_estimators=200  # Adjust the number of estimators (trees)
+    n_estimators = 933,
+    max_depth = 3,
+    learning_rate = 0.0659553078597774,
+    reg_lambda = 0.49527985837464644
 )
 
 # Perform K-fold cross-validation
@@ -53,33 +54,6 @@ for train_index, val_index in kfold.split(X_train):
 
     # Train the model
     model.fit(X_train_fold, y_train_fold)
-
-    # Make predictions on the validation set
-    y_train_pred = model.predict(X_train_fold)
-    y_val_pred = model.predict(X_val_fold)
-    y_test_pred = model.predict(X_test)
-
-    # Calculate evaluation metrics for the fold
-    train_mse = mean_squared_error(y_train_fold, y_train_pred)
-    val_mse = mean_squared_error(y_val_fold, y_val_pred)
-    train_r2 = r2_score(y_train_fold, y_train_pred)
-    val_r2 = r2_score(y_val_fold, y_val_pred)
-
-    # Append metrics to the lists
-    losses.append((train_mse, val_mse))
-    r2_scores.append((train_r2, val_r2))
-
-# Calculate mean metrics across all folds
-mean_train_mse = sum([mse[0] for mse in losses]) / len(losses)
-mean_val_mse = sum([mse[1] for mse in losses]) / len(losses)
-mean_train_r2 = sum([r2[0] for r2 in r2_scores]) / len(r2_scores)
-mean_val_r2 = sum([r2[1] for r2 in r2_scores]) / len(r2_scores)
-
-# Calculate evaluation metrics on the test set
-y_test_pred = model.predict(X_test)
-test_mse = mean_squared_error(y_test, y_test_pred)
-test_r2 = r2_score(y_test, y_test_pred)
-
 
 input_schema = Schema(X_train.values)
 output_schema = Schema(y_train)

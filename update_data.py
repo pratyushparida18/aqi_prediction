@@ -22,9 +22,9 @@ values.insert(0, date)
 values.insert(0, index)
 
 new_data = pd.DataFrame([values], columns=["index","date","pm25", "pm10", "o3", "no2", "so2", "co", "aqi"])
-new_data['date'] = pd.to_datetime(new_data['date'])  # Convert 'date' column to timestamp
-new_data['no2'] = new_data['no2'].astype(int)  # Convert 'no2' column to bigint
-new_data['so2'] = new_data['so2'].astype(int)  # Convert 'so2' column to bigint
+new_data['date'] = pd.to_datetime(new_data['date'])  
+new_data['no2'] = new_data['no2'].astype(int)  
+new_data['so2'] = new_data['so2'].astype(int)  
 new_data['co'] = new_data['co'].astype(int)
 new_data['o3'] = new_data['o3'].astype(int)
 new_data['pm10'] = new_data['pm10'].astype(int)

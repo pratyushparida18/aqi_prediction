@@ -4,4 +4,6 @@ To run the app follow the below steps:
 
 - Then activate the virtual environment and paste the following command
 
-```streamlit run app.py```
+```bash 
+streamlit run app.py
+```

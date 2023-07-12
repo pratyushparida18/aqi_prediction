@@ -33,11 +33,9 @@ td_version, td_job = feature_view.create_train_test_split(
 X_train, X_test, y_train, y_test = feature_view.get_train_test_split(td_version)
 
 
-# Initialize lists to store evaluation metrics for each fold
 losses = []
 r2_scores = []
 
-# Create an instance of XGBRegressor with modified hyperparameters
 model = XGBRegressor(
     n_estimators = 933,
     max_depth = 3,
@@ -45,14 +43,12 @@ model = XGBRegressor(
     reg_lambda = 0.49527985837464644
 )
 
-# Perform K-fold cross-validation
 kfold = KFold(n_splits=5, shuffle=True, random_state=42)
 
 for train_index, val_index in kfold.split(X_train):
     X_train_fold, X_val_fold = X_train.iloc[train_index], X_train.iloc[val_index]
     y_train_fold, y_val_fold = y_train.iloc[train_index], y_train.iloc[val_index]
 
-    # Train the model
     model.fit(X_train_fold, y_train_fold)
 
 input_schema = Schema(X_train.values)
@@ -62,7 +58,6 @@ model_schema = ModelSchema(input_schema=input_schema, output_schema=output_schem
 model_schema.to_dict()
 
 
-# The 'fraud_batch_model' directory will be saved to the model registry
 model_dir="aqi_prediction_model"
 if os.path.isdir(model_dir) == False:
     os.mkdir(model_dir)

@@ -3,17 +3,15 @@ import hopsworks
 import joblib
 import numpy as np
 
-
 st.title("AQI Prediction App")
 
 # Input fields
-pm25 = st.number_input("pm25", value=0.0)
-pm10 = st.number_input("pm10", value=0.0)
-o3 = st.number_input("o3", value=0.0)
-no2 = st.number_input("no2", value=0.0)
-so2 = st.number_input("so2", value=0.0)
-co = st.number_input("co", value=0.0)
-
+pm25 = st.number_input("pm25")
+pm10 = st.number_input("pm10")
+o3 = st.number_input("o3")
+no2 = st.number_input("no2")
+so2 = st.number_input("so2")
+co = st.number_input("co")
 
 # Submit button
 if st.button("Submit"):
@@ -33,4 +31,3 @@ if st.button("Submit"):
     # Display prediction
     st.subheader("Prediction")
     st.write(prediction)
-

@@ -3,7 +3,7 @@ from pymongo import MongoClient
 import hopsworks
 import requests
 
-# Connect to MongoDB
+# Connecting to MongoDB
 client = MongoClient('mongodb+srv://pratyushparida18:password%4018@cluster0.gewdlyg.mongodb.net/')
 db = client['index_db']
 collection = db['index_collection']
@@ -38,5 +38,5 @@ feature_group.insert(new_data)
 
 
 
-# Update the index value in the collection
+# Update the index value in the mongo db collection
 collection.update_one({}, {"$set": {"index": index+1}}, upsert=True)

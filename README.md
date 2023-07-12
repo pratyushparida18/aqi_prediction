@@ -22,7 +22,9 @@ It runs every 1 hour. I have used github actions to schedule the run.
 This file contains code for fetching data from feature store , model from model registry , retrain the model and push the model to feature store.
 It is scheduled to run every week using github actions.
 
-## app.py
+### app.py
 This file contains a streamlit app that contains necessary fields for taking user inputs. It  fetches the trained model from hopsworks model registry and predicts on the input data and shows the output in the screen.
+
+<br>
 
 To schedule the run of the scripts create a yml file inside .github/workflows and specify the schedule for running the workflow by using the schedule event.
